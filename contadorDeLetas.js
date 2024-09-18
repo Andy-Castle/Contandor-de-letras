@@ -3,9 +3,15 @@ let letra = "o";
 
 function contadorDeLetras(palabra, letra) {
   let letrasTotales = 0;
-  letra = letra.replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  letra = letra
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
   let palabraSinAcento = [
-    ...palabra.replace(/[\u0300-\u036f]/g, "").toLowerCase(),
+    ...palabra
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim(),
   ];
 
   for (const letter of palabraSinAcento) {
@@ -13,7 +19,7 @@ function contadorDeLetras(palabra, letra) {
       letrasTotales++;
     }
   }
-  return `Hay ${letrasTotales} ${letra} en la palabra ${palabra}`;
+  return `Hay ${letrasTotales} '${letra}' en la palabra ${palabra}`;
 }
 
 console.log(contadorDeLetras(palabra, letra));
