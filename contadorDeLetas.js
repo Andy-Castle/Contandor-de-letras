@@ -1,21 +1,19 @@
 let palabra = "otorrinolaringólogo";
-let letra = "r";
+let letra = "o";
 
 function contadorDeLetras(palabra, letra) {
   let letrasTotales = 0;
+  letra = letra.replace(/[\u0300-\u036f]/g, "").toLowerCase();
   let palabraSinAcento = [
-    ...palabra
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase(),
+    ...palabra.replace(/[\u0300-\u036f]/g, "").toLowerCase(),
   ];
 
   for (const letter of palabraSinAcento) {
-    if (letter == letra.toLowerCase()) {
+    if (letter == letra) {
       letrasTotales++;
     }
   }
-  return `Hay ${letrasTotales} ${letra.toLowerCase()} en la palabra ${palabra}`;
+  return `Hay ${letrasTotales} ${letra} en la palabra ${palabra}`;
 }
 
 console.log(contadorDeLetras(palabra, letra));
